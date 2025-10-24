@@ -1,35 +1,54 @@
 # Nama Program : Gofood
 
-# ALGORITMA
+#inisiasi
 
-jarak = float(input("Nilai jarak: "))
-if (jarak > 40):
-    quit("Terlalu Jauh")
-
-# Makanan
-ar_makan = ["Sushi", "Caviar"]
-ar_harga = [15000, 40000]
 cart_makan = []
 cart_harga = []
-for i in range (0, len(ar_makan)):
-    print(f"{i}. {ar_makan[i]}: Rp {ar_harga[i]},00")
-ulang = True
-while ulang:
+hargamakan = 0
+
+# ALGORITMA
+
+def pemesanan_makanan() :
+    inputmakan = int(input("Silahkan pilih nomor menu yang tersedia : ")) - 1
+    inputjumlah = int(input("Berapa banyak yang ingin dipesan? : "))
+
+    for i in range(inputjumlah):
+        cart_makan.append(ar_makan[inputmakan])
+        cart_harga.append(ar_harga[inputmakan])
     print(cart_makan)
     print(cart_harga)
-    inputmakan = int(input("Masukkan Nomor Makanan : "))
-    inputjumlah = int(input("Masukkan Jumlah Makanan : "))
-    if (inputmakan == 666):
-        ulang = False
-    else:
-        for i in range(inputjumlah):
-            cart_makan.append(ar_makan[inputmakan])
-            cart_harga.append(ar_harga[inputmakan])
 
-print(cart_makan)
-print(cart_harga)
+    print(""" 
+Apakah masih ingin menambah pesanan?
+jika iya ketik   : 1
+    """)
 
-hargamakan = 0
+print("=== Selamat datang di aplikasi pemesanan Online === \n")
+jarak = float(input("Berapa jarak rumah anda dengan restoran? : "))
+if (jarak > 40):
+    quit("Jarak rumah anda terlalu jauh, tidak bisa melakukan pemesanan")
+
+# Makanan
+print("\n=== Silahkan pilih menu yang ingin dipesan === \n")
+ar_makan = ["Sushi", "Caviar"]
+ar_harga = [15000, 40000]
+for i in range (0, len(ar_makan)):
+    print(f"{i+1}. {ar_makan[i]} : Rp {ar_harga[i]},00")
+print("\n")
+
+pemesanan_makanan()
+lanjut = int(input("Ingin tambah pesanan? : "))
+
+if lanjut == 1 :
+    pemesanan_makanan()
+    lanjut = int(input("Ingin tambah pesanan? : "))
+
+print(f""" 
+Total makanan yang anda pesan 
+Sushi  = {cart_makan.count('Sushi')} Pcs
+Caviar = {cart_makan.count('Caviar')} Pcs
+""")
+
 
 for i in range (0, len(cart_makan)):
     hargamakan += cart_harga[i]
@@ -41,7 +60,7 @@ if (jarak <= 5):
     ongkir = 4000
 else:
     jarak2 = jarak-5
-    kali = (jarak2//2) + 1
+    kali = -(-jarak2//2)
     ongkir = 4000 + kali*2000
 
 # Biaya Jasa
@@ -55,4 +74,4 @@ else:
 
 total = hargamakan + ongkir + jasa
 
-print(f"Maka, harga total yang harus dibayar adalah : Rp. {total}")
+print(f"\nMaka, harga total yang harus dibayar adalah : Rp. {total:.0f},00")
