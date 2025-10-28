@@ -19,8 +19,8 @@ def pemesanan_makanan() :
     print(cart_harga)
 
     print(""" 
-Apakah masih ingin menambah pesanan?
-jika iya ketik   : 1
+Jika ingin menambah pesanan ketik     : 1
+Jika ingin mengurangi pesanan ketik   : 2
     """)
 
 print("=== Selamat datang di aplikasi pemesanan Online === \n")
@@ -37,11 +37,17 @@ for i in range (0, len(ar_makan)):
 print("\n")
 
 pemesanan_makanan()
-lanjut = int(input("Ingin tambah pesanan? : "))
+lanjut = int(input("Ingin tambah pesanan atau mengurangi? : "))
 
 while lanjut == 1 :
     pemesanan_makanan()
-    lanjut = int(input("Ingin tambah pesanan? : "))
+    lanjut = int(input("Ingin tambah pesanan atau mengurangi? : "))
+
+while lanjut == 2 :
+    print(cart_makan)
+    Hapus = int(input("Makanan mana yang ingin anda hapus? : "))
+    del cart_makan[Hapus - 1]
+    lanjut = int(input("Ingin tambah pesanan atau mengurangi? : "))
 
 print(f""" 
 Total makanan yang anda pesan 
@@ -55,9 +61,17 @@ Chicken Katsu Curry Rice = {cart_makan.count('Chicken Katsu Curry Rice')} Pcs
 Salmon Teriyaki Don = {cart_makan.count('Salmon Teriyaki Don')} Pcs
 """)
 
+#Harga makanan
+Harga_salmon = cart_makan.count('Salmon Maki') * ar_harga[0]
+Harga_Crunchy = cart_makan.count('Crunchy Salmon Roll') * ar_harga[1]
+Harga_tamago = cart_makan.count('Tamago Sushi') * ar_harga[2]
+Harga_Kani = cart_makan.count('Kani Mentai Mayo Roll') * ar_harga[3]
+Harga_Tuna = cart_makan.count('Tuna Maki') * ar_harga[4]
+Harga_Gyudon = cart_makan.count('Gyudon') * ar_harga[5]
+Harga_chicken = cart_makan.count('Chicken Katsu Curry Rice') * ar_harga[6]
+Harga_teriyaki = cart_makan.count('Salmon Teriyaki Don') * ar_harga[7]
 
-for i in range (0, len(cart_makan)):
-    hargamakan += cart_harga[i]
+Harga_makanan_total = Harga_salmon + Harga_Crunchy + Harga_tamago + Harga_Kani + Harga_Tuna + Harga_Gyudon + Harga_chicken + Harga_teriyaki
 
 # Ongkir
 # (0km - 5km) = 4000
@@ -78,6 +92,6 @@ if(len(cart_makan) > 20):
 else:
     jasa = 10000
 
-total = hargamakan + ongkir + jasa
+total = Harga_makanan_total + ongkir + jasa
 
 print(f"\nMaka, harga total yang harus dibayar adalah : Rp. {total:.0f},00")
