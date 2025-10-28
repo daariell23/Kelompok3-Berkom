@@ -30,8 +30,8 @@ if (jarak > 40):
 
 # Makanan
 print("\n=== Silahkan pilih menu yang ingin dipesan === \n")
-ar_makan = ["Sushi", "Caviar"]
-ar_harga = [15000, 40000]
+ar_makan = ["Salmon Maki", "Crunchy Salmon Roll", "Tamago Sushi", "Kani Mentai Mayo Roll", "Tuna Maki", "Gyudon", "Chicken Katsu Curry Rice", "Salmon Teriyaki Don"]
+ar_harga = [40000, 80000, 35000, 70000, 50000, 70000, 70000, 90000]
 for i in range (0, len(ar_makan)):
     print(f"{i+1}. {ar_makan[i]} : Rp {ar_harga[i]},00")
 print("\n")
@@ -39,14 +39,20 @@ print("\n")
 pemesanan_makanan()
 lanjut = int(input("Ingin tambah pesanan? : "))
 
-if lanjut == 1 :
+while lanjut == 1 :
     pemesanan_makanan()
     lanjut = int(input("Ingin tambah pesanan? : "))
 
 print(f""" 
 Total makanan yang anda pesan 
-Sushi  = {cart_makan.count('Sushi')} Pcs
-Caviar = {cart_makan.count('Caviar')} Pcs
+Salmon Maki  = {cart_makan.count('Salmon Maki')} Pcs
+Crunchy Salmon Roll = {cart_makan.count('Crunchy Salmon Roll')} Pcs
+Tamago Sushi = {cart_makan.count('Tamago Sushi')} Pcs
+Kani Mentai Mayo Roll = {cart_makan.count('Kani Mentai Mayo Roll')} Pcs
+Tuna Maki = {cart_makan.count('Tuna Maki')} Pcs
+Gyudon = {cart_makan.count('Gyudon')} Pcs
+Chicken Katsu Curry Rice = {cart_makan.count('Chicken Katsu Curry Rice')} Pcs
+Salmon Teriyaki Don = {cart_makan.count('Salmon Teriyaki Don')} Pcs
 """)
 
 
